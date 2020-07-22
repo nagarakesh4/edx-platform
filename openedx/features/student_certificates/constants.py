@@ -15,8 +15,8 @@ PDFKIT_HTML_STRING =\
 PDFKIT_IMAGE_PATH = False  # Use false instead of output path to save pdf to a python variable
 PDFKIT_IMAGE_TAG = '<img src="data:image/png;base64,{base64_img}"/>'
 PDFKIT_OPTIONS = {
-    PAGE_HEIGHT: '{}px',
-    PAGE_WIDTH: '{}px',
+    PAGE_HEIGHT: '{}cm',
+    PAGE_WIDTH: '{}cm',
     'disable-smart-shrinking': None,  # By default pdfkit scale/shrink html, in our case we do not need that
     'encoding': "UTF-8",
     'margin-bottom': '0.0in',

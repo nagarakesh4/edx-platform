@@ -197,10 +197,18 @@ def get_pdfkit_options(image_width, image_height):
     :param image_height: image height in pixel
     :return: pdfkit options dict
     """
-    PDFKIT_OPTIONS[PAGE_HEIGHT] = PDFKIT_OPTIONS[PAGE_HEIGHT].format(image_height)
-    PDFKIT_OPTIONS[PAGE_WIDTH] = PDFKIT_OPTIONS[PAGE_WIDTH].format(image_width)
+    image_width_in_cm, image_height_in_cm = pixel_to_centimeter_at_96dpi(image_width, image_height)
+
+    PDFKIT_OPTIONS[PAGE_HEIGHT] = PDFKIT_OPTIONS[PAGE_HEIGHT].format(image_height_in_cm)
+    PDFKIT_OPTIONS[PAGE_WIDTH] = PDFKIT_OPTIONS[PAGE_WIDTH].format(image_width_in_cm)
 
     return PDFKIT_OPTIONS
+
+
+def pixel_to_centimeter_at_96dpi(image_width, image_height):
+    """Convert pixel to centimeter at 96dpi"""
+    cm_per_pixel = 2.54 / 96
+    return image_width * cm_per_pixel, image_height * cm_per_pixel
 
 
 def get_pdfkit_html(image_base64):
